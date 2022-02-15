@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
+
 import exceptions.ColaExceededSizeException;
 import exceptions.ElementBlockedException;
 import exceptions.LlevateTuNullDeAquiException;
@@ -157,11 +158,14 @@ public class ColaDelCastigo<E> {
 	 */
 
 	public boolean removeAll(Collection<E> c) throws Exception {
-//		if (cola.removeAll(c))
-//			return true;
-//		else
-//			return false;
-		throw new Exception(new ElementBlockedException("No puedes eliminar todos los elementos de la cola"));
+		if(cola.size() > c.size()) {
+		if (cola.removeAll(c))
+			return true;
+		else
+			return false;
+		} else {
+			throw new Exception(new ElementBlockedException("No puedes eliminar todos los elementos de la cola"));
+		}
 	}
 
 	/**
